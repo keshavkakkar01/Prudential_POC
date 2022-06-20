@@ -57,6 +57,15 @@
               ],
               "outputHashing": "all"
             },
+            "dev" : {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
             "development": {
               "buildOptimizer": false,
               "optimization": false,
@@ -73,6 +82,9 @@
           "configurations": {
             "production": {
               "browserTarget": "Prudential_UI:build:production"
+            },
+            "dev" : {
+              "browserTarget": "Prudential_UI:build:dev"
             },
             "development": {
               "browserTarget": "Prudential_UI:build:development"

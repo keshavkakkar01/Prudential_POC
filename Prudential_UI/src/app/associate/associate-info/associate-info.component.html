@@ -1,0 +1,46 @@
+<form class="form" [formGroup]="informationForm" (ngSubmit)="submitAssociateInfo()"> 
+    <div style="width: 100%;">
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput  placeholder="Enter Name" required formControlName="name"
+            >
+            <mat-error *ngIf="informationForm.value.name">Name is required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Employee Id</mat-label>
+            <input matInput  placeholder="Enter employeeId" required
+            formControlName="employeeId" >
+            <mat-error *ngIf="informationForm.value.employeeId">Employee Id is required</mat-error>
+        </mat-form-field>
+        
+    </div>
+    <div style="width: 100%;">
+        <mat-form-field appearance="fill">
+            <mat-label>Project Code</mat-label>
+            <input matInput  placeholder="Enter Project Code" required
+            formControlName="projectId" name="projectId" >
+            <mat-error *ngIf="informationForm.value.projectId">Project Code is required</mat-error>
+        </mat-form-field>
+        
+    
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput  placeholder="Enter email address" required
+        formControlName="email" >
+        <mat-error *ngIf="informationForm.value.email">Email is required</mat-error>
+    </mat-form-field>
+</div>
+<div>
+    <mat-form-field appearance="fill">
+        <mat-label>Contact</mat-label>
+        <input matInput  placeholder="Enter contact detail" id="contact"
+        required
+        formControlName="contact">
+        <mat-error *ngIf="informationForm.value.contact">Contact is required</mat-error>
+    </mat-form-field>
+</div>
+<div>
+    <button type="submit" mat-raised-button  color="primary">Next</button>
+</div>
+</form>
+

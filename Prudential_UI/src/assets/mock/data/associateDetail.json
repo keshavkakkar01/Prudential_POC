@@ -1,0 +1,45 @@
+{
+    "associate": {
+        "associateName": "Test",
+        "engagementName": "Test",
+        "majorFunction": "Test",
+        "band": "Test",
+        "primaryContact": "Test",
+        "emailIbm": "Test",
+        "emailPru": "Test",
+        "xid": "Test",
+        "prudentialManager": "Test",
+        "endDate": null,
+        "location": "Test",
+        "city": "Test",
+        "billType": "Test",
+        "billCode": "Test",
+        "role": "Test",
+        "asOnDate": null,
+        "pruExpDate": null,
+        "itExpDate": null,
+        "ibmDate": null,
+        "experienceWithPru": "Test",
+        "careerExperience": "Test",
+        "experienceWithIbm": "Test",
+        "skillset": "Test",
+        "resourceCriticality": "Test",
+        "atImmigrationVisaRisks": "Test",
+        "backupSuccessorResource": 1,
+        "keyContingencyGroup": "Test",
+        "additionalContingency": "Test",
+        "visaType": "Test",
+        "workPermitValidUntil": "Test",
+        "extensionUpdates": null,
+        "visaMaxOutDate": null,
+        "timeLeftInUs": "Test",
+        "h1bNominations": "Test",
+        "riskMitigationComments": "Test",
+        "planInCaseOfExtensionAmendmentRejection": "Test"
+    },
+    "associateSkill": {
+        "skillId": 1,
+        "skillRating": "4"
+    }
+}
+
