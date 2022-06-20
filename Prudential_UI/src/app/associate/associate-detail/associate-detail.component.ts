@@ -133,9 +133,7 @@ export class AssociateDetailComponent implements OnInit {
     }
   }
   updateAssociateDetail() {
-    console.log('updateAssociate Details', this.DetailForm.valid);
     if (this.DetailForm.valid) {
-      this.associateDetail.associateInfo = this.associateInfo;
       this.associateDetail = this.DetailForm.value;
       this.selectedIndex = 2;
       this.isSkillPage = true;
@@ -162,8 +160,14 @@ export class AssociateDetailComponent implements OnInit {
       }
     });
     if (i == 0) {
+      var completeDetail = JSON.parse(JSON.stringify(this.associateDetail));
+      completeDetail.employeeId = this.associateInfo.employeeId;
+      completeDetail.name = this.associateInfo.name;
+      completeDetail.email = this.associateInfo.email;
+      completeDetail.contact = this.associateInfo.contact;
+      completeDetail.projectId = this.associateInfo.projectId;
       this.associateDetailService
-        .submitAssociateData(this.associateDetail)
+        .submitAssociateData(completeDetail)
         .subscribe((data) => {
           console.log('response is');
         });
