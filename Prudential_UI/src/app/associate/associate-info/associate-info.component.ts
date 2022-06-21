@@ -12,7 +12,7 @@ export class AssociateInfoComponent implements OnInit {
   @Output() addEvent = new EventEmitter<AssociateInfo>();
   informationForm = new FormGroup({
     employeeId: new FormControl('', Validators.required),
-    name: new FormControl('', Validators.required),
+    associateName: new FormControl('', Validators.required),
     email: new FormControl('', Validators.email),
     contact: new FormControl('', [
       Validators.required,
@@ -28,6 +28,7 @@ export class AssociateInfoComponent implements OnInit {
 
   submitAssociateInfo() {
     if (this.informationForm.valid) {
+      console.log('this.form .valod', this.informationForm.valid);
       this.associateInfo = <AssociateInfo>this.informationForm.value;
       this.addEvent.emit(this.associateInfo);
     }

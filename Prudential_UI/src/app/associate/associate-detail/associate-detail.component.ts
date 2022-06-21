@@ -26,6 +26,7 @@ export class AssociateDetailComponent implements OnInit {
     '',
     '',
     '',
+    '',
     new Date(),
     '',
     '',
@@ -48,6 +49,7 @@ export class AssociateDetailComponent implements OnInit {
     '',
     new Date(),
     new Date(),
+    '',
     '',
     '',
     '',
@@ -81,6 +83,7 @@ export class AssociateDetailComponent implements OnInit {
       engagementName: new FormControl('', Validators.required),
       majorFunction: new FormControl('', Validators.required),
       band: new FormControl('', Validators.required),
+      emailIBM: new FormControl('', [Validators.email, Validators.required]),
       emailClient: new FormControl('', [Validators.email, Validators.required]),
       xid: new FormControl('', Validators.required),
       clientManager: new FormControl('', Validators.required),
@@ -99,11 +102,23 @@ export class AssociateDetailComponent implements OnInit {
         Validators.pattern('^[0-9]*$'),
         Validators.maxLength(2),
       ]),
-      careerExperience: new FormControl('', Validators.required),
-      experienceWithIbm: new FormControl('', Validators.required),
+      careerExperience: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^[0-9]*$'),
+        Validators.maxLength(2),
+      ]),
+      experienceWithIbm: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^[0-9]*$'),
+        Validators.maxLength(2),
+      ]),
       resourceCriticality: new FormControl('', Validators.required),
       atImmigrationVisaRisks: new FormControl('', Validators.required),
-      backupSuccessorResource: new FormControl('', Validators.required),
+      backupSuccessorResource: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^[0-9]*$'),
+        Validators.maxLength(2),
+      ]),
       keyContingencyGroup: new FormControl('', Validators.required),
       additionalContingency: new FormControl('', Validators.required),
       visaType: new FormControl('', Validators.required),
@@ -117,11 +132,12 @@ export class AssociateDetailComponent implements OnInit {
         '',
         Validators.required
       ),
+      skillset: new FormControl('', Validators.required),
     });
 
     this.skillForm = [
       this.fb.group({
-        skillName: new FormControl('', Validators.required),
+        skillId: new FormControl('', Validators.required),
         skillRating: new FormControl('', Validators.required),
       }),
     ];
@@ -130,7 +146,8 @@ export class AssociateDetailComponent implements OnInit {
   ngOnInit(): void {}
 
   addAssociateInfo(event: AssociateInfo) {
-    if (event.name) {
+    if (event.associateName) {
+      console.log('add Associate info', event.associateName);
       this.associateInfo = event;
       this.isDetailpage = true;
       this.selectedIndex = 1;
@@ -147,7 +164,7 @@ export class AssociateDetailComponent implements OnInit {
   addNewSkillForm() {
     this.skillForm.push(
       this.fb.group({
-        skillName: new FormControl('', Validators.required),
+        skillId: new FormControl('', Validators.required),
         skillRating: new FormControl('', Validators.required),
       })
     );
@@ -155,21 +172,22 @@ export class AssociateDetailComponent implements OnInit {
 
   saveAssociateCompleteDetail() {
     let i = 0;
-    this.associateDetail.skill = [];
+    this.associateDetail.associateSkill = [];
     this.skillForm.forEach((skill) => {
       if (skill.invalid) {
         i++;
       } else {
-        this.associateDetail.skill.push(skill.value);
+        this.associateDetail.associateSkill.push(skill.value);
       }
     });
     if (i == 0) {
       var completeDetail = JSON.parse(JSON.stringify(this.associateDetail));
       completeDetail.employeeId = this.associateInfo.employeeId;
-      completeDetail.name = this.associateInfo.name;
+      completeDetail.associateName = this.associateInfo.associateName;
       completeDetail.email = this.associateInfo.email;
       completeDetail.contact = this.associateInfo.contact;
       completeDetail.projectId = this.associateInfo.projectId;
+
       this.associateDetailService
         .submitAssociateData(completeDetail)
         .subscribe((data) => {

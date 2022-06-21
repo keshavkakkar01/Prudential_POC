@@ -3,12 +3,13 @@ class Skill {
   'skillName': string;
   'skillRating': string;
 }
+
 export class AssociateDetail {
-  'skill': Skill[];
-  'associateInfo': AssociateInfo;
+  'associateSkill': Skill[];
   'engagementName': String;
   'majorFunction': String;
   'band': String;
+  'emailIbm': String;
   'emailClient': String;
   'xid': String;
   'clientManager': String;
@@ -38,10 +39,12 @@ export class AssociateDetail {
   'visaNominations': String;
   'riskMitigationComments': String;
   'planInCaseOfExtensionAmendmentRejection': String;
+  'skillset': String;
   constructor(
     engagementName: String,
     majorFunction: String,
     band: String,
+    emailIbm: String,
     emailClient: String,
     xid: String,
     clientManager: String,
@@ -70,11 +73,13 @@ export class AssociateDetail {
     timeLeftInUs: String,
     visaNominations: String,
     riskMitigationComments: String,
-    planInCaseOfExtensionAmendmentRejection: String
+    planInCaseOfExtensionAmendmentRejection: String,
+    skillset: String
   ) {
     this.engagementName = engagementName;
     this.majorFunction = majorFunction;
     this.band = band;
+    this.emailIbm = emailIbm;
     this.emailClient = emailClient;
     this.xid = xid;
     this.clientManager = clientManager;
@@ -105,5 +110,6 @@ export class AssociateDetail {
     this.riskMitigationComments = riskMitigationComments;
     this.planInCaseOfExtensionAmendmentRejection =
       planInCaseOfExtensionAmendmentRejection;
+    this.skillset = skillset;
   }
 }
